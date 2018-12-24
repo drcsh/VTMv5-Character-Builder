@@ -7,11 +7,13 @@ This is a WIP.
 # Todo:
 
 1. finish model structure for characters
+
 2. build interfaces for:
-2.1. Signing up
-2.2. Creating and managing a Chronicle
-2.3. creating/editing/viewing minor characters
-2.4. ... for main characters (much more complicated)
+  * Signing up
+  * Creating and managing a Chronicle
+  * creating/editing/viewing minor characters
+  * the same for main characters (much more complicated)
+
 3. Further features:
-3.1. manage users in a chronicle
-3.2. Character Map
+  * Manage users in a chronicle
+  * Character Map
