@@ -2,7 +2,6 @@ from django.db import models
 
 from chronicle.models import Chronicle
 
-from choices import ATTRIBUTE_DOTS, SKILL_DOTS
 
 class MinorCharacter(models.Model):
     """
@@ -21,14 +20,14 @@ class MinorCharacter(models.Model):
         related_name="minor_characters",
     )
 
-    physical_dice = models.IntegerField()
+    # Can be used to organise secondary chars. E.g. "SI", "Thugs", "Camarilla" etc
+    tag = models.CharField(blank=True)
 
-    mental_dice = models.IntegerField()
-
-    social_dice = models.IntegerField()
+    physical_dice = models.PositiveSmallIntegerField()
+    mental_dice = models.PositiveSmallIntegerField()
+    social_dice = models.PositiveSmallIntegerField()
 
     #TODO: Exceptional Dice Pools (these are mostly Skill + Attribute dice, but it's a customfield style deal)
 
     special = models.CharField(blank=True)
-
     notes = models.CharField(blank=True)

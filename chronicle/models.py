@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 from django.contrib.auth.models import User
@@ -13,7 +14,7 @@ class Chronicle(models.Model):
 
     # The chronicle must be owned by a particular user, who is its' Storyteller. 
     storyteller = models.ForeignKey(
-        User,
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE
     )
 
