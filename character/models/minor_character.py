@@ -27,7 +27,5 @@ class MinorCharacter(models.Model):
     mental_dice = models.PositiveSmallIntegerField()
     social_dice = models.PositiveSmallIntegerField()
 
-    #TODO: Exceptional Dice Pools (these are mostly Skill + Attribute dice, but it's a customfield style deal)
-
     special = models.CharField(blank=True)
     notes = models.CharField(blank=True)

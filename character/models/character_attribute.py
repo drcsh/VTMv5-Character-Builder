@@ -1,15 +1,12 @@
 from django.db import models
 
-from .character import Character 
+from .character import Character
 
 class CharacterAttribute(models.Model):
     """
         Attributes exist in a many to one relationship with a character. Each character should have the same
-        9 attributes, however, I've stored them like this for a couple of reasons:
-        1. To make the character model less bloated (which has fringe benefits on DB performance)
-        2. To add symmetry between accessing character Skills and Discipline Powers and Attributes        
-        3. To allow accessing the DOTS constant in a structured way
-        
+        9 attributes by default. 
+
         It could also allow custom attributes like we have custom skills.
     """
 

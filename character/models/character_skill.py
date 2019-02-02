@@ -10,7 +10,7 @@ class CharacterSkill(models.Model):
         'category', i.e. Physical/Social/Mental with corresponding attributes. 
 
         Each skill represented separately to allow adding custom fields. I.e. running a Chronicle in 1600, the Storyteller
-        may want to use "Ride" rather than "Drive" and "Archery" rather than "Firearms", nd not provide "Technology" or
+        may want to use "Ride" rather than "Drive" and "Archery" rather than "Firearms", and not provide "Technology" or
         "Science" skills at all. 
     """
     DEFAULT_SKILLS = (
@@ -72,3 +72,4 @@ class CharacterSkill(models.Model):
         ordering = ["character", "category", "description"]
         verbose_name = "Character Skill"
         verbose_name_plural = "Character Skills"
+        

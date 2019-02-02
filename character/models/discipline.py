@@ -1,3 +1,19 @@
+from django.db import models
 
-# TODO: This will represent the main discipline schools. Characters can have dots in disciplines, and skills which
-# belong to that discipline
+class Discipline(models.Model):
+    """
+        Vampire characters have a number of disciplines. They always start with 3 which depend on their clan, 
+        but they can obtain more than that (by drinking the blood of a vampire with another discipline and then
+        spending XP on it)
+
+        Because the Discipline is related to both the clan and the character, the Discipline itself has to be
+        represented separately from its relationship to the character (unlike Attributes and Skills)
+    """
+
+    name = models.CharField()
+    description = models.TextField()
+
+    class Meta:
+        ordering = ["name"]
+        verbose_name = "Discipline"
+        verbose_name_plural = "Disciplines"
