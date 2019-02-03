@@ -10,22 +10,26 @@ class CharacterAttribute(models.Model):
         It could also allow custom attributes like we have custom skills.
     """
 
-    DEFAULT_ATTRIBUTES = (
-        ('Strength', 0),
-        ('Dexterity', 0),
-        ('Stamina', 0),
-        ('Charisma', 1),
-        ('Manipulation', 1),
-        ('Composure', 1),
-        ('Intelligence', 2),
-        ('Wits', 2),
-        ('Resolve', 2),
-    )
+    PHYSICAL = 0
+    SOCIAL = 1
+    MENTAL = 2
 
     CATEGORIES = (
-        (0, 'Physical'),
-        (1, 'Social'),
-        (2, 'Mental')
+        (PHYSICAL, 'Physical'),
+        (SOCIAL, 'Social'),
+        (MENTAL, 'Mental')
+    )
+
+    DEFAULT_ATTRIBUTES = (
+        ('Strength', PHYSICAL),
+        ('Dexterity', PHYSICAL),
+        ('Stamina', PHYSICAL),
+        ('Charisma', SOCIAL),
+        ('Manipulation', SOCIAL),
+        ('Composure', SOCIAL),
+        ('Intelligence', MENTAL),
+        ('Wits', MENTAL),
+        ('Resolve', MENTAL),
     )
 
     # Each attribute has a "dot" value from 0-5

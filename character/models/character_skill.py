@@ -13,41 +13,48 @@ class CharacterSkill(models.Model):
         may want to use "Ride" rather than "Drive" and "Archery" rather than "Firearms", and not provide "Technology" or
         "Science" skills at all. 
     """
-    DEFAULT_SKILLS = (
-        ("Athletics", 0),
-        ("Brawl", 0),
-        ("Craft", 0),
-        ("Drive", 0),
-        ("Firearms", 0),
-        ("Larceny", 0),
-        ("Melee", 0),
-        ("Stealth", 0),
-        ("Survival", 0),
-        ("Animal Ken", 1),
-        ("Etiquette", 1),
-        ("Insight", 1),
-        ("Intimidation", 1),
-        ("Leadership", 1),
-        ("Performance", 1),
-        ("Persuasion", 1),
-        ("Streetwise", 1),
-        ("Subterfuge", 1),
-        ("Academics", 2),
-        ("Awareness", 2),
-        ("Finance", 2),
-        ("Investigation", 2),
-        ("Medicine", 2),
-        ("Occult", 2),
-        ("Politics", 2),
-        ("Science", 2),
-        ("Technology", 2),
-    )
+
+    PHYSICAL = 0
+    SOCIAL = 1
+    MENTAL = 2
 
     CATEGORIES = (
-        (0, 'Physical'),
-        (1, 'Social'),
-        (2, 'Mental')
+        (PHYSICAL, 'Physical'),
+        (SOCIAL, 'Social'),
+        (MENTAL, 'Mental')
     )
+
+    DEFAULT_SKILLS = (
+        ("Athletics", PHYSICAL),
+        ("Brawl", PHYSICAL),
+        ("Craft", PHYSICAL),
+        ("Drive", PHYSICAL),
+        ("Firearms", PHYSICAL),
+        ("Larceny", PHYSICAL),
+        ("Melee", PHYSICAL),
+        ("Stealth", PHYSICAL),
+        ("Survival", PHYSICAL),
+        ("Animal Ken", SOCIAL),
+        ("Etiquette", SOCIAL),
+        ("Insight", SOCIAL),
+        ("Intimidation", SOCIAL),
+        ("Leadership", SOCIAL),
+        ("Performance", SOCIAL),
+        ("Persuasion", SOCIAL),
+        ("Streetwise", SOCIAL),
+        ("Subterfuge", SOCIAL),
+        ("Academics", MENTAL),
+        ("Awareness", MENTAL),
+        ("Finance", MENTAL),
+        ("Investigation", MENTAL),
+        ("Medicine", MENTAL),
+        ("Occult", MENTAL),
+        ("Politics", MENTAL),
+        ("Science", MENTAL),
+        ("Technology", MENTAL),
+    )
+
+    
 
     DOTS = (
         (0, 'Untrained'),

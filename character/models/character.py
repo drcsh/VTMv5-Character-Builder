@@ -40,6 +40,7 @@ class Character(models.Model):
     notes = models.TextField()
 
     # Blood
+    is_vampire = models.BooleanField(null=False, default=True)
     clan = models.ForeignKey(
         Clan,
         on_delete=models.PROTECT,
@@ -57,6 +58,7 @@ class Character(models.Model):
     )
     blood_potency = models.PositiveSmallIntegerField()
     predator_type = models.CharField()
+    hunger = models.PositiveSmallIntegerField()
 
     # Stats
     # TODO: work out a nice way of representing superficial/aggrevated... HP and WP aren't just integers...

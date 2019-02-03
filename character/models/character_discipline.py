@@ -1,7 +1,6 @@
 from django.db import models
 
 from .discipline import Discipline
-from .character import Character
 
 class CharacterDiscipline(models.Model):
     """
@@ -23,3 +22,6 @@ class CharacterDiscipline(models.Model):
     discipline = models.ForeignKey(Discipline, on_delete=models.PROTECT)
     character = models.ForeignKey(Character, on_delete=models.CASCADE)
     value = models.PositiveSmallIntegerField(choices=DOTS)
+
+# Due to circular dependencies, this comes at the end
+from .character import Character
