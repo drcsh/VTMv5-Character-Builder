@@ -7,7 +7,8 @@ This is a WIP.
 # Todo:
 
 1. finish model structure for characters
-  * Display list for attributes?
+  * minor character wellbeing tracker
+  * character rituals
 
 2. build interfaces for:
   * Signing up

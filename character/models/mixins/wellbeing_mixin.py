@@ -6,11 +6,63 @@ class WellbeingMixin(object):
     @staticmethod
     def calculate_new_health_state(current_state, max_health, new_aggravated_damage, new_superficial_damage, is_vampire):
         """
-           Work out the new health state of a character
-           TODO
+            Work out the new health state of a character - assumes that the character's health state has just changed (i.e.
+            they took damage or recovered some health)
+           
+            :param int current_state: corresponds to a Health state constant
+            :param int max_health: the maximum number of 'boxes' on the health tracker
+            :param int new_aggravated_damage: aggravated damage now on their tracker
+            :param int new_superficial_damage: superficial damage now on their tracker
+            :param bool is_vampire: vampires have an additional health state (torpor)
+            :return: The new health state of the character (post damage)
+            :rtype int:
         """
-        pass
-    
+
+        # Sanity check:
+        if current_state == HEALTH_STATE_DEAD:
+            return HEALTH_STATE_DEAD
+        
+        # Tracker full (death/torpor)
+        if new_aggravated_damage >= max_health:
+
+            if not is_vampire:
+                return HEALTH_STATE_DEAD
+
+            # Additional damage received by a vamp in Torpor causes death
+            if current_state != HEALTH_STATE_TORPOR:
+                return HEALTH_STATE_TORPOR
+                
+            else:
+                return HEALTH_STATE_DEAD
+
+        # impairment 
+        if new_aggravated_damage + new_superficial_damage >= max_health:
+            return HEALTH_STATE_IMPARED
+
+        if new_aggravated_damage + new_superficial_damage > 0:
+            return HEALTH_STATE_INJURED
+
+        return HEALTH_STATE_HEALTHY
+
+    @staticmethod
+    def calculate_new_willpower_state(max_willpower, new_aggravated_damage, new_superficial_damage):
+        """
+            Works out the new Willpower state of the character. Much simpler than health - willpower is either 
+            umpaired or unimpaired and there is no difference between vampires and mortals
+
+            :param int max_willpower: the maximum number of 'boxes' on the willpower tracker
+            :param int new_aggravated_damage: aggravated damage now on their tracker
+            :param int new_superficial_damage: superficial damage now on their tracker
+            :return: The new willpower state of the character (post damage)
+            :rtype int:
+        """
+
+        if new_aggravated_damage + new_superficial_damage >= max_willpower:
+            return WILLPOWER_STATE_IMPARED
+
+        else:
+            return WILLPOWER_STATE_OK
+     
     @staticmethod
     def calculate_superficial_damage(max_value, aggravated_damage, superficial_damage, damage_taken):
         """

@@ -59,9 +59,6 @@ class Character(models.Model):
     blood_potency = models.PositiveSmallIntegerField()
     predator_type = models.CharField()
     hunger = models.PositiveSmallIntegerField()
-
-    # Stats
-    # TODO: work out a nice way of representing superficial/aggrevated... HP and WP aren't just integers...
     
     class Meta:
         ordering = ["name"]
