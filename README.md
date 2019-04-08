@@ -6,16 +6,18 @@ This is a WIP.
 
 # Todo:
 
-1. finish model structure for characters
-  * minor character wellbeing tracker
-  * character rituals
+1. build interfaces for:
+  * Signing up as a Storyteller
+  * Signing up as a Player
+  * (Storyteller) Creating and managing a Chronicle
+  * (Storyteller) creating/editing/viewing minor characters
+  * (Storyteller) the same for main characters (much more complicated)
+  * (Player) creating your character sheet
 
-2. build interfaces for:
-  * Signing up
-  * Creating and managing a Chronicle
-  * creating/editing/viewing minor characters
-  * the same for main characters (much more complicated)
-
-3. Further features:
+2. Further features:
   * Manage users in a chronicle
-  * Character Map
+  * Character Relationship Map
+
+# Done 
+
+1. The models are basically done at this point, pending some refinement
