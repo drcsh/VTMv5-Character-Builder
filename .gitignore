@@ -9,7 +9,7 @@ db.sqlite3
 *.sql
 
 # vscode
-.vscode
+.vscode/
 
 # Pycharm
-.idea
+.idea/
