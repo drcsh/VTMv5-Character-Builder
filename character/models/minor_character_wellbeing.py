@@ -13,7 +13,7 @@ class MinorCharacterWellbeing(models.Model, WellbeingMixin):
         The logic for changing wellbeing states is in the Mixin, this is just
         the model definition for storing the actual values. 
 
-        Note that the class names must be consistent with the mixin.
+        Note that the class variable names must be consistent with the mixin.
     """
     
     character = models.ForeignKey(
@@ -31,12 +31,9 @@ class MinorCharacterWellbeing(models.Model, WellbeingMixin):
     superficial_health_damage = models.PositiveSmallIntegerField()
     superficial_willpower_damage = models.PositiveSmallIntegerField()
 
-    health_state = models.SmallIntegerField(choices=HEALTH_STATES)
-    willpower_state = models.SmallIntegerField(choices=WILLPOWER_STATES)
+    health_state = models.CharField(choices=HEALTH_STATES)
+    willpower_state = models.CharField(choices=WILLPOWER_STATES)
 
     class Meta:
         verbose_name = "Minor Character Wellbeing"
         verbose_name_plural = "Minor Character Wellbeings"
-
-
-    
