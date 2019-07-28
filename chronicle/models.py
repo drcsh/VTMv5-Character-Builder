@@ -10,7 +10,7 @@ class Chronicle(models.Model):
         sign up to Chronicles, and characteres will exist *within* that Chronicle.
     """
 
-    name = models.CharField()
+    name = models.CharField(max_length=150)
 
     # The chronicle must be owned by a particular user, who is its' Storyteller. 
     storyteller = models.ForeignKey(

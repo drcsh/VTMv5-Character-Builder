@@ -12,7 +12,7 @@ class Clan(models.Model):
         rather than any particular Chronicle. 
     """
 
-    name = models.CharField()
+    name = models.CharField(max_length=30)
     description = models.TextField()
     bane = models.TextField
 

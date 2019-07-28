@@ -2,6 +2,7 @@ from django.db import models
 
 from .character import Character
 
+
 class CharacterAttribute(models.Model):
     """
         Attributes exist in a many to one relationship with a character. Each character should have the same
@@ -47,13 +48,13 @@ class CharacterAttribute(models.Model):
         related_name="attributes", 
         on_delete=models.CASCADE
     )
-    name = models.CharField()
+    name = models.CharField(max_length=20)
     category = models.PositiveSmallIntegerField(choices=CATEGORIES)
     display_order = models.PositiveSmallIntegerField()
     value = models.PositiveSmallIntegerField(choices=DOTS)
     
 
     class Meta:
-        ordering = ["character", "category", "description"]
+        ordering = ["character", "category", "name"]
         verbose_name = "Character Skill"
         verbose_name_plural = "Character Skills"

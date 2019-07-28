@@ -5,13 +5,13 @@ from .character import Character
 
 class CharacterSkill(models.Model):
     """
-        Skills exist in a many to one relationship with characters, each character has many skills (default 27) each with
-        a value between 0 and 5, and an optional speciality which is a free text field. Additionally they have a
+        Skills exist in a many to one relationship with characters, each character has many skills (default 27) each
+        with a value between 0 and 5, and an optional speciality which is a free text field. Additionally they have a
         'category', i.e. Physical/Social/Mental with corresponding attributes. 
 
-        Each skill represented separately to allow adding custom fields. I.e. running a Chronicle in 1600, the Storyteller
-        may want to use "Ride" rather than "Drive" and "Archery" rather than "Firearms", and not provide "Technology" or
-        "Science" skills at all. 
+        Each skill represented separately to allow adding custom fields. I.e. running a Chronicle in 1600, the
+        Storyteller may want to use "Ride" rather than "Drive" and "Archery" rather than "Firearms", and not provide
+        "Technology" or "Science" skills at all.
     """
 
     PHYSICAL = 0
@@ -70,13 +70,13 @@ class CharacterSkill(models.Model):
         related_name="skills", 
         on_delete=models.CASCADE
     )
-    name = models.CharField()
+    name = models.CharField(max_length=25)
     category = models.PositiveSmallIntegerField(choices=CATEGORIES)
-    speciality = models.CharField(blank=True)
+    speciality = models.CharField(max_length=50, blank=True)
     value = models.PositiveSmallIntegerField(choices=DOTS)
 
     class Meta:
-        ordering = ["character", "category", "description"]
+        ordering = ["character", "category", "name"]
         verbose_name = "Character Skill"
         verbose_name_plural = "Character Skills"
         

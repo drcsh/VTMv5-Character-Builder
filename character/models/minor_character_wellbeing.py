@@ -31,8 +31,8 @@ class MinorCharacterWellbeing(models.Model, WellbeingMixin):
     superficial_health_damage = models.PositiveSmallIntegerField()
     superficial_willpower_damage = models.PositiveSmallIntegerField()
 
-    health_state = models.CharField(choices=HEALTH_STATES)
-    willpower_state = models.CharField(choices=WILLPOWER_STATES)
+    health_state = models.CharField(max_length=25, choices=HEALTH_STATES)
+    willpower_state = models.CharField(max_length=25, choices=WILLPOWER_STATES)
 
     class Meta:
         verbose_name = "Minor Character Wellbeing"

@@ -1,6 +1,7 @@
 from django.db import models
 
-from minor_character import MinorCharacter
+from .minor_character import MinorCharacter
+
 
 class MinorCharacterExceptionalDice(models.Model):
     """

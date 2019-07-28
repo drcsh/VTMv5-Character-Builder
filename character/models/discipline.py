@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Discipline(models.Model):
     """
         Vampire characters have a number of disciplines. They always start with 3 which depend on their clan, 
@@ -10,7 +11,7 @@ class Discipline(models.Model):
         represented separately from its relationship to the character (unlike Attributes and Skills)
     """
 
-    name = models.CharField()
+    name = models.CharField(max_length=25)
     description = models.TextField()
 
     class Meta:

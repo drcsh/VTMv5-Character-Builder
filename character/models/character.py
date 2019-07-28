@@ -4,8 +4,6 @@ from chronicle.models import Chronicle
 
 # Model Dependencies 
 from .clan import Clan
-from .discipline import Discipline
-from .character_discipline import CharacterDiscipline
 from .vampire_generation import Generation
 
 class Character(models.Model):
@@ -17,7 +15,7 @@ class Character(models.Model):
     """
 
     # Identification
-    name = models.CharField()
+    name = models.CharField(max_length=100)
     chronicle = models.ForeignKey(
         Chronicle,
         on_delete=models.CASCADE,
@@ -51,18 +49,11 @@ class Character(models.Model):
         on_delete=models.PROTECT,
         null=True
     )
-    disciplines = models.ManyToManyField(
-        Discipline,
-        related_name="characters",
-        through=CharacterDiscipline  # Custom intermediary
-    )
     blood_potency = models.PositiveSmallIntegerField()
-    predator_type = models.CharField()
+    predator_type = models.CharField(max_length=50)
     hunger = models.PositiveSmallIntegerField()
     
     class Meta:
         ordering = ["name"]
         verbose_name = "Main Character"
         verbose_name_plural = "Main Characters"
-
-    

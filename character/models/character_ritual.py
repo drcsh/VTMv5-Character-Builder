@@ -3,6 +3,7 @@ from django.db import models
 from .character import Character
 from .discipline import Discipline
 
+
 class CharacterRitual(models.Model):
     """
         In addition to their disciplines, characters can learn magic

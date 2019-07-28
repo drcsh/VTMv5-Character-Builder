@@ -1,6 +1,7 @@
 from django.db import models
 
-from .discipline import Discipline
+
+
 
 class CharacterDiscipline(models.Model):
     """
@@ -9,6 +10,9 @@ class CharacterDiscipline(models.Model):
         This is a many-to-many relationship with an additional 'value' field which represents
         how developed their powers are in that discipline (i.e. how many dots)
     """
+
+    from .character import Character
+    from .discipline import Discipline
 
     DOTS = (
         (0, 'Latent'),

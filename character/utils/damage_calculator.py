@@ -42,6 +42,9 @@ class DamageCalculator:
             if new_aggravated_damage == 0:
                 return HEALTH_STATE_HEALTHY
 
+            # Otherwise, they stay in Torpor
+            return HEALTH_STATE_TORPOR
+
         # Tracker full, mortals die, vamps go into Torpor
         if new_aggravated_damage >= max_health:
 

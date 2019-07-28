@@ -12,7 +12,7 @@ class MinorCharacter(models.Model):
         types of situations. 
     """
 
-    name = models.CharField()
+    name = models.CharField(max_length=50)
 
     chronicle = models.ForeignKey(
         Chronicle,
@@ -21,11 +21,11 @@ class MinorCharacter(models.Model):
     )
 
     # Can be used to organise secondary chars. E.g. "SI", "Thugs", "Camarilla" etc
-    tag = models.CharField(blank=True)
+    tag = models.CharField(blank=True, max_length=50)
 
     physical_dice = models.PositiveSmallIntegerField()
     mental_dice = models.PositiveSmallIntegerField()
     social_dice = models.PositiveSmallIntegerField()
 
-    special = models.CharField(blank=True)
-    notes = models.CharField(blank=True)
+    special = models.TextField(blank=True)
+    notes = models.TextField(blank=True)

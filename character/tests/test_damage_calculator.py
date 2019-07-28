@@ -35,7 +35,7 @@ class TestDamageCalculator(TestCase):
         result_human = DamageCalculator.calculate_new_health_state(current_state=HEALTH_STATE_HEALTHY,
                                                                    max_health=5,
                                                                    old_aggravated_damage=0,
-                                                                   new_aggravated_damage=1,
+                                                                   new_aggravated_damage=5,
                                                                    new_superficial_damage=0,
                                                                    is_vampire=False)
         self.assertEqual(result_human, HEALTH_STATE_DEAD)
@@ -128,7 +128,7 @@ class TestDamageCalculator(TestCase):
         result_vamp = DamageCalculator.calculate_new_health_state(current_state=HEALTH_STATE_HEALTHY,
                                                                   max_health=5,
                                                                   old_aggravated_damage=0,
-                                                                  new_aggravated_damage=1,
+                                                                  new_aggravated_damage=5,
                                                                   new_superficial_damage=0,
                                                                   is_vampire=True)
         self.assertEqual(result_vamp, HEALTH_STATE_TORPOR)

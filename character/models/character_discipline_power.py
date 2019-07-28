@@ -3,6 +3,7 @@ from django.db import models
 from .discipline import Discipline
 from .character import Character
 
+
 class DisciplinePower(models.Model):
     """
         This represents a power which a character has gained from one of their Disciplines.
