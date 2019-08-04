@@ -54,10 +54,11 @@ class DamageCalculator:
             return HEALTH_STATE_DEAD
 
         # impairment
-        if new_aggravated_damage + new_superficial_damage >= max_health:
+        total_damage = new_aggravated_damage + new_superficial_damage
+        if total_damage >= max_health:
             return HEALTH_STATE_IMPAIRED
 
-        if new_aggravated_damage + new_superficial_damage > 0:
+        if total_damage > 0:
             return HEALTH_STATE_INJURED
 
         return HEALTH_STATE_HEALTHY
@@ -105,7 +106,7 @@ class DamageCalculator:
             superficial_damage += damage_taken
 
         else:
-            # We have to convert the remainder to aggrevated and fill the tracker with superficial
+            # We have to convert the remainder to aggravated and fill the tracker with superficial
             aggravated_damage += (damage_taken - free_boxes)
 
             if aggravated_damage >= max_value:
@@ -116,28 +117,32 @@ class DamageCalculator:
             else:
                 superficial_damage = max_value - aggravated_damage
 
-        return (aggravated_damage, superficial_damage)
+        return aggravated_damage, superficial_damage
 
     @staticmethod
     def calculate_aggravated_damage(max_value, aggravated_damage, superficial_damage, damage_taken):
         """
            work out the effect of aggravated damage on the tracker
+
+           TODO: fold this into superficial damage calculation as it's basically the same.
         """
 
         free_boxes = max_value - aggravated_damage - superficial_damage
 
-        # whatever happens, aggravated damage is going up
-        aggravated_damage += damage_taken
+        if free_boxes >= damage_taken:
+            # there are free HP/WP boxes, so we can just add the damage
+            aggravated_damage += damage_taken
 
-        if aggravated_damage > max_value:
-            # oh dear
-            aggravated_damage = max_value
-            superficial_damage = 0
+        else:
+            # Superficial damage gets converted to aggravated.
+            aggravated_damage += (damage_taken - free_boxes)
 
-        elif free_boxes < damage_taken:
-            # We ran out of space on the tracker, so superficial damage goes down as it
-            # is overwritten by aggravated damage
-            remainder = free_boxes - damage_taken
-            superficial_damage -= remainder
+            if aggravated_damage >= max_value:
+                # bad things are going to happen!
+                aggravated_damage = max_value
+                superficial_damage = 0
 
-        return (aggravated_damage, superficial_damage)
+            else:
+                superficial_damage = max_value - aggravated_damage
+
+        return aggravated_damage, superficial_damage
