@@ -2,7 +2,8 @@ from django.db import models
 
 from chronicle.models import Chronicle
 
-# Model Dependencies 
+# Model Dependencies
+from user.models import Profile
 from .clan import Clan
 from .vampire_generation import Generation
 
@@ -20,6 +21,12 @@ class Character(models.Model):
         Chronicle,
         on_delete=models.CASCADE,
         related_name="characters",
+    )
+    player = models.ForeignKey(
+        Profile,
+        related_name='characters',
+        on_delete=models.SET_NULL,
+        null=True
     )
 
     # Personality
