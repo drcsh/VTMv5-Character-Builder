@@ -64,3 +64,6 @@ class Character(models.Model):
         ordering = ["name"]
         verbose_name = "Main Character"
         verbose_name_plural = "Main Characters"
+
+    def create(self):
+        super(Character, self).create()
